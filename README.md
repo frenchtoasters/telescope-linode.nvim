@@ -1,7 +1,5 @@
 # Telescope-kubectl.nvim
 
-Edit k8s objects, view pod logs, etc...
-
 ## Requirements
 
 * tmux
