@@ -33,8 +33,7 @@ require'telescope'.seutp {
 	...
 	extensions = {
 		linode_commands = {
-			linode_cmd = "linode-cli",
-			extra_args = ""
+			linode_cmd = "linode-cli"
 		}
 	},
 }
