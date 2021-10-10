@@ -4,6 +4,12 @@ Edit k8s objects, view pod logs, etc...
 
 ## Install
 
+* Configure cli tool:
+```
+linode-cli configure
+```
+
+* Update init.vim
 ```
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
