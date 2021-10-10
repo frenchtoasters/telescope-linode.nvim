@@ -100,7 +100,6 @@ end
 return require('telescope').register_extension {
 	setup = function(ext_config)
 		linode_cmd = ext_config.linode_cmd or "linode_cli"
-		extra_args = ext_config.extra_args or ""
 	end,
 	exports = {
 		linode_ssh = M.linode_ssh,
