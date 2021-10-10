@@ -20,42 +20,23 @@ local M = {}
 local linode_cmd = ""
 
 function split(pString, pPattern)
-   local Table = {}  -- NOTE: use {n = 0} in Lua-5.0
-   local fpat = "(.-)" .. pPattern
-   local last_end = 1
-   local s, e, cap = pString:find(fpat, 1)
-   while s do
-      if s ~= 1 or cap ~= "" then
-     table.insert(Table,cap)
-      end
-      last_end = e+1
-      s, e, cap = pString:find(fpat, last_end)
-   end
-   if last_end <= #pString then
-      cap = pString:sub(last_end)
-      table.insert(Table, cap)
-   end
-   return Table
-end
-
-
-M.linode_preview = defaulter(function(opts)
-	return previewers.new_termopen_previewer {
-		get_command = opts.get_command or function(entry)
-			local preview = opts.get_preview_window()
-			local choice = entry[1]
-			local choice_ns = string.match(choice, "^[^ ]+")
-			local choice_obj = string.match(choice, "[ ]+[^ ]+"):gsub("%s", "")
-			if vim.tbl_isempty(entry) then
-				return {"echo", ""}
-			end
-			return {
-				'linode-cli',
-				string.format("--help")
-			}
+	local Table = {}  -- NOTE: use {n = 0} in Lua-5.0
+	local fpat = "(.-)" .. pPattern
+	local last_end = 1
+	local s, e, cap = pString:find(fpat, 1)
+	while s do
+		if s ~= 1 or cap ~= "" then
+			table.insert(Table,cap)
 		end
-	}
-end, {})
+		last_end = e+1
+		s, e, cap = pString:find(fpat, last_end)
+	end
+	if last_end <= #pString then
+		cap = pString:sub(last_end)
+		table.insert(Table, cap)
+	end
+	return Table
+end
 
 function M.linode_ssh(opts)
 	local linode_commands = {
@@ -102,7 +83,7 @@ function M.linode_ssh(opts)
 			map("i", "<CR>", function()
 				local choice = action_state.get_selected_entry(pbfr)
 				local ip_addr = split(choice.value, "\t")
-				vim.cmd('! tmux neww ssh root@' .. ip_addr[3] .. ' ' .. extra_args)
+				vim.cmd('! tmux neww ssh root@' .. ip_addr[3])
 			end)
 			return true
 		end,
