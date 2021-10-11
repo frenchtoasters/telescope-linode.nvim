@@ -40,5 +40,5 @@ require'telescope'.seutp {
 ```
 
 ```
-nnoremap <leader>k <cmd>lua require('telescope').load_extension('linode_commands').ssh_linode()<cr>
+nnoremap <leader>k <cmd>lua require('telescope').load_extension('linode_commands').linode_ssh()<cr>
 ```
