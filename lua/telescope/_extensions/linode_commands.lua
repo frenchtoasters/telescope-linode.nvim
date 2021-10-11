@@ -66,7 +66,7 @@ function M.linode_ssh(opts)
 	local results = {}
 	Job:new({
 		command = 'linode-cli',
-		args = {'linodes', 'list', '--text', '--format id, label, region, ipv4', '--no-headers'},
+		args = {'linodes', 'list', '--text', '--format', 'id,label,region,ipv4', '--no-headers'},
 		on_stdout = function(_, data)
 			table.insert(results, data)
 		end,
