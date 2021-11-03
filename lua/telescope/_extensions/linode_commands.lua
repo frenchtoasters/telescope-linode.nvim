@@ -83,7 +83,8 @@ function M.linode_ssh(opts)
 			map("i", "<CR>", function()
 				local choice = action_state.get_selected_entry(pbfr)
 				local ip_addr = split(choice.value, "\t")
-				vim.cmd('! tmux neww ssh root@' .. ip_addr[4])
+                                local addr = split(ip_addr[4], " ")
+				vim.cmd('! tmux neww ssh root@' .. addr[1])
 			end)
 			return true
 		end,
